@@ -1,0 +1,15 @@
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -l [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+
+RewriteRule ^index.html$ index.php
+RewriteRule ^category/car-news$ index.php?page=home&category=1
+RewriteRule ^category/shopping$ index.php?page=home&category=2
+RewriteRule ^category/skin$ index.php?page=home&category=3
+RewriteRule ^category/insurance$ index.php?page=home&category=4
+
+RewriteRule ^category/car-news/([A-Za-z0-9-]+)-([0-9]+).html$ index.php?page=news&category=1&id_news=$2
+RewriteRule ^category/shopping/([A-Za-z0-9-]+)-([0-9]+).html$ index.php?page=news&category=2&id_news=$2
+RewriteRule ^category/skin/([A-Za-z0-9-]+)-([0-9]+).html$ index.php?page=news&category=3&id_news=$2
+RewriteRule ^category/insurance/([A-Za-z0-9-]+)-([0-9]+).html$ index.php?page=news&category=4&id_news=$2
