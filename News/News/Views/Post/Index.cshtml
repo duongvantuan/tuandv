@@ -1,0 +1,81 @@
+﻿<div class="inner-wrap clearfix">
+    <div class="main-content-section clearfix">
+        <button class="tablink" onclick="openPage('Home', this, 'red')" id="defaultOpen">Thêm mới tin tức</button>
+        <button class="tablink" onclick="openPage('News', this, 'green')">Thêm mới thể loại</button>
+        <div id="Home" class="tabcontent">
+            <span color="red" style="font-size: 30px;margin-left: 100px;"><?php echo $message ?></span>
+            <form id="add-news-form" onsubmit="return false">
+                <table>
+                    <tr>
+                        <th>Thể loại</th>
+                        <td>
+                            <select style="height:40px;font-size: 18px;width: 300px;" name="CategoryId">
+                                @foreach (var category in Model.LsCategory)
+                                {
+                                    <option value="@(category.CategoryId)">@(category.CategoryName)</option>
+                                }
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th style="width: 100px;">Tiêu đề</th>
+                        <td><input type="text" name="TitleNews" /></td>
+                    </tr>
+                    <tr>
+                        <th style="width: 100px;">Ảnh đại diện</th>
+                        <td><input type="text" name="UrlImg" /></td>
+                    </tr>
+                    <tr>
+                        <th style="vertical-align: middle;">Nội dung</th>
+                        <td><textarea id="description" cols="40" rows="10" name="Content"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <input type="submit" value="Add" name="add_product" onclick="insert()"/>
+                            <input type="reset" class="button_big" value="Reset" />
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+
+        <div id="News" class="tabcontent">
+            <h3>News</h3>
+            <p>Some news this fine day!</p>
+        </div>
+        <script type="text/javascript">
+            $(function () {
+                $('#description').wysiwyg();
+            });
+            function openPage(pageName, elmnt, color) {
+                var i, tabcontent, tablinks;
+                tabcontent = document.getElementsByClassName("tabcontent");
+                for (i = 0; i < tabcontent.length; i++) {
+                    tabcontent[i].style.display = "none";
+                }
+                tablinks = document.getElementsByClassName("tablink");
+                for (i = 0; i < tablinks.length; i++) {
+                    tablinks[i].style.backgroundColor = "";
+                }
+                document.getElementById(pageName).style.display = "block";
+                elmnt.style.backgroundColor = color;
+            }
+            document.getElementById("defaultOpen").click();
+
+            function insert() {
+                $.ajax({
+                    url: '@(Model.URL)/news/insert.html',
+                    type: 'post',
+                    dataType: 'text',
+                    data: $('#add-news-form').serialize(),
+                    success: function (message) {
+                        alert(message);
+                    },
+                    failure: function () {
+                        alert("System error! Please come back later...");
+                    }
+                });
+            }
+        </script>
+    </div>
+</div>

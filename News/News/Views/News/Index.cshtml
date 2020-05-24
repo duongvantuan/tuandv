@@ -1,0 +1,40 @@
+﻿<div class="inner-wrap clearfix">
+    <div class="front-page-top-section clearfix">
+        <div class="widget_slider_area"></div>
+        <div class="widget_beside_slider"></div>
+    </div>
+    <div class="main-content-section clearfix">
+        <div id="primary">
+            <div id="content" class="clearfix">
+                <header class='page-header'><h1 class='page-title'><span>@(Model.CategoryName)</span></h1></header>
+                <div class="article-container">
+                    @{int i = 0;}
+                    @foreach (var item in Model.LsNew)
+                    {
+                        <article class='post-239 post type-post status-publish format-standard has-post-thumbnail hentry category-science tag-beautiful-towns tag-south-africa'>
+                            <div class='featured-image'>
+                                <a href='@(Model.URL)/category/@(item.Category.UrlFriendly)/@(item.UrlFriendly).html' title='@(item.TitleNews)'>
+                                    <img width='@(i == 0 ? 800 : 445)' height='445' src='@(item.UrlImg)' class='attachment-colormag-featured-image size-colormag-featured-image wp-post-image' alt='@(item.TitleNews)'>
+                                </a>
+                            </div>
+                            <div class='article-content clearfix'>
+                                <div class='above-entry-meta'><span class='cat-links'><a href='@(Model.URL)/category/@(item.Category.UrlFriendly)/' rel='category tag'>@(item.Category.CategoryName)</a>&nbsp;</span></div>
+                                <header class='entry-header'>
+                                    <h2 class='entry-title'>
+                                        <a href='@(Model.URL)/category/@(item.Category.UrlFriendly)/@(item.UrlFriendly).html' title='@(item.TitleNews)'>@(item.TitleNews)</a>
+                                    </h2>
+                                </header>
+                                <div class='entry-content clearfix'>
+                                    <p>@Html.Raw(item.DescriptionNews)</p>
+                                    <a class='more-link' title='@(item.TitleNews)' href='@(Model.URL)/category/@(item.Category.UrlFriendly)/@(item.UrlFriendly).html'><span>Read more</span></a>
+                                </div>
+                            </div>
+                        </article>
+                        i++;
+                    }
+                </div>
+            </div>
+        </div>
+        @await Html.PartialAsync("_RightNavBar")
+    </div>
+</div>

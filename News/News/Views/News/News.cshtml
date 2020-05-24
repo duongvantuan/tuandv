@@ -1,0 +1,92 @@
+﻿<div class="inner-wrap clearfix">
+    <div class="front-page-top-section clearfix">
+        <div class="widget_slider_area"></div>
+        <div class="widget_beside_slider"></div>
+    </div>
+    <div class="main-content-section clearfix">
+        <div id='primary'>
+            <div id='content' class='clearfix'>
+                <article class='post-239 post type-post status-publish format-standard has-post-thumbnail hentry category-science tag-beautiful-towns tag-south-africa'>
+                    <div class='article-content clearfix'>
+                        <div class='above-entry-meta'><span class='cat-links'><a href='@(Model.URL)/category/@(Model.News.Category.UrlFriendly).html' rel='category tag'>@(Model.News.Category.CategoryName)</a>&nbsp;</span></div>
+                        <header class='entry-header'>
+                            <h1 class='entry-title'>@(Model.News.TitleNews)</h1>
+                        </header>
+                        <div class='entry-content clearfix'>
+                            <center>@Html.Raw(Model.ads1)</center>
+                            <figure id='attachment_241' style='width: 630px' class='wp-caption aligncenter'>
+                                <img class='size-full wp-image-241' src='@(Model.News.UrlImg)' alt='@(Model.News.TitleNews)' width='630' height='474'>
+                                <figcaption class='wp-caption-text'>@(Model.News.TitleNews)</figcaption>
+                            </figure>
+                            <p>@Html.Raw(Model.News.Content)</p>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            @*<ul class='default-wp-page clearfix'>
+                    $query = mysql_query("SELECT MAX(A.id_news) AS id_news, A.title_news, B.category_name FROM tbl_news A INNER JOIN tbl_category B ON A.category_id = B.category_id WHERE A.id_news < {$idNews} AND A.category_id = {$category};");
+                    $news = mysql_fetch_array($query);
+                    $categoryName = strtolower($news['category_name']);
+                    $titleNews = generate_seo_link($news['title_news'], '-', true, $bad_words);
+                    if ($news['title_news'] != '') {
+                    <li class='previous'><a href='$url/category/$categoryName/$titleNews-{$news[' id_news']}.html' rel='prev'><span class='meta-nav'><i class='fas fa-arrow-left'></i></span> {$news['title_news']}</a></li>
+                    }
+
+                    $query = mysql_query("SELECT MIN(A.id_news) AS id_news, A.title_news, B.category_name FROM tbl_news A INNER JOIN tbl_category B ON A.category_id = B.category_id WHERE A.id_news > {$idNews} AND A.category_id = {$category};");
+                    $news = mysql_fetch_array($query);
+                    $titleNews = generate_seo_link($news['title_news'], '-', true, $bad_words);
+                    if ($news['title_news'] != '') {
+                    <li class='next'><a href='$url/category/$categoryName/$titleNews-{$news[' id_news']}.html' rel='next'>{$news['title_news']} <span class='meta-nav'><i class='fas fa-arrow-right'></i></span></a></li>
+                    }
+                </ul>*@
+            <div id="comments" class="comments-area">
+                <div id="respond" class="comment-respond">
+                    <h3 id="reply-title" class="comment-reply-title">
+                        Leave a Reply <small>
+                            <a rel="nofollow"
+                               id="cancel-comment-reply-link"
+                               href="/discover-5-most-beautiful-towns-in-south-africa/#respond"
+                               style="display:none;">Cancel reply</a>
+                        </small>
+                    </h3>
+                    <form action="" method="post" id="commentform" class="comment-form" novalidate="">
+                        <p class="comment-notes">
+                            <span id="email-notes">Your email address will not be published.</span>
+                            Required fields are marked <span class="required">*</span>
+                        </p>
+                        <p class="comment-form-comment">
+                            <label for="comment">Comment</label>
+                            <textarea id="comment"
+                                      name="comment" cols="45" rows="8" maxlength="65525" aria-required="true"
+                                      required="required"></textarea>
+                        </p>
+                        <p class="comment-form-author">
+                            <label for="author">Name <span class="required">*</span></label>
+                            <input id="author" name="author" type="text" value="" size="30" maxlength="245"
+                                   aria-required="true" required="required">
+                        </p>
+                        <p class="comment-form-email">
+                            <label for="email">Email <span class="required">*</span></label>
+                            <input id="email" name="email" type="email" value="" size="30" maxlength="100"
+                                   aria-describedby="email-notes" aria-required="true" required="required">
+                        </p>
+                        <p class="form-submit">
+                            <input name="submit" type="submit" id="submit" class="submit"
+                                   value="Post Comment"> <input type="hidden" name="comment_post_ID" value="239"
+                                                                id="comment_post_ID">
+                            <input type="hidden" name="comment_parent" id="comment_parent" value="0">
+                        </p>
+                        <p style="display: none;">
+                            <input type="hidden" id="akismet_comment_nonce"
+                                   name="akismet_comment_nonce" value="132a15c21c">
+                        </p>
+                        <p style="display: none;"></p>
+                    </form>
+                </div>
+                <!-- #respond -->
+            </div>
+            <!-- #comments -->
+        </div>
+        @await Html.PartialAsync("_RightNavBar")
+    </div>
+</div>

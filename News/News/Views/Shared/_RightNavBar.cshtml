@@ -1,0 +1,42 @@
+﻿<div id="secondary">
+    <aside id="text-2" class="widget widget_text clearfix">
+        <h3 class="widget-title"><span>Search By Google</span></h3>
+        <div class="textwidget">
+            <style type="text/css">
+                              @*@import url(//www.google.com/cse/api/branding.css);*@
+            </style>
+            <div class="cse-branding-bottom" style="background-color:#FFFFFF;color:#000000">
+                <div class="cse-branding-form">
+                    <form action="http://www.google.com/" id="cse-search-box">
+                        <div>
+                            <input type="hidden" name="cx" value="006236088925092053547:whft8zbmm2l">
+                            <input type="hidden" name="ie" value="UTF-8">
+                            <input type="text" name="q" size="55">
+                            <input type="submit" name="sa" value="Search">
+                        </div>
+                    </form>
+                </div>
+                <div class="cse-branding-logo"></div>
+                <div class="cse-branding-text">
+                    Custom Search
+                </div>
+            </div>
+        </div>
+    </aside>
+    <aside id="text-3" class="widget widget_text clearfix">
+        <div class="textwidget">
+            <!-- Hinh Vuong -->
+            <!-- 336x280 -->
+            @Html.Raw(Model.ads2)
+        </div>
+    </aside>
+    <aside id="recent-posts-2" class="widget widget_recent_entries clearfix">
+        <h3 class="widget-title"><span>Recent Posts</span></h3>
+        <ul>
+            @foreach (var item in Model.LsNewRecent)
+            {
+                <li><a href='@(Model.URL)/category/@(item.Category.UrlFriendly)/@(item.UrlFriendly).html'>@(item.TitleNews)</a></li>
+            }
+        </ul>
+    </aside>
+</div>

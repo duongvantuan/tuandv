@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>@Model.TitLe</title>
+    <link rel="shortcut icon" href="@(Model.URL)/image/favicon.ico" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta http-equiv="cache-control" content="max-age=0" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta name="robots" content="index, follow" />
+    <meta name="language" content="English" />
+    <meta name="description" content="@Model.Description" />
+    <meta name="keywords" content="@Model.Keywords" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="@(Model.URL)/css/font-awesome.css" type="text/css" media="all">
+    <link rel="stylesheet" href="@(Model.URL)/css/style.css" type="text/css" media="all">
+    <link rel="stylesheet" href="@(Model.URL)/css/wysiwyg.css" type="text/css" media="all">
+    <script src="@(Model.URL)/js/jquery-1.7.2.min.js"></script>
+    <script src="@(Model.URL)/js/main.js"></script>
+    <script src="@(Model.URL)/js/jquery.wysiwyg.js"></script>
+    <script src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+<body class="home blog wide">
+    <center>@Html.Raw(Model.ads1)</center>
+    <div id="page" class="hfeed site">
+        <header id="masthead" class="site-header clearfix">
+            <div id="header-text-nav-container" class="clearfix">
+                <div class="inner-wrap">
+                    <div id="header-text-nav-wrap" class="clearfix">
+                        <div id="header-left-section">
+                            <div id="header-text" class="">
+                                <h1 id="site-title">
+                                    <a href="@(Model.URL)" title="Car News" rel="home">Car News</a>
+                                </h1>
+                                <!-- #site-description -->
+                            </div>
+                            <!-- #header-text -->
+                        </div>
+                        <!-- #header-left-section -->
+                        <div id="header-right-section">
+                        </div>
+                        <!-- #header-right-section -->
+                    </div>
+                    <!-- #header-text-nav-wrap -->
+                </div>
+                <!-- .inner-wrap -->
+                <nav id="site-navigation" class="main-navigation clearfix" role="navigation">
+                    <div class="inner-wrap clearfix">
+                        <h4 class="menu-toggle"></h4>
+                        <div class="menu-primary-container">
+                            <ul id="menu-menu-1" class="menunav-menu">
+                                <li id="menu-item-9" class="menu-item menu-item-type-taxonomy menu-item-object-category @(Model.CategoryId == 0 ? "current-menu-item" : "") menu-item-9">
+                                    <a href="@(Model.URL)">Home</a>
+                                </li>
+                                @foreach (var category in Model.LsCategory)
+                                {
+                                <li id="menu-item-9" class="menu-item menu-item-type-taxonomy menu-item-object-category @(category.CategoryId == Model.CategoryId ? "current-menu-item" : "") menu-item-9">
+                                    <a href="@(Model.URL)/category/@(category.UrlFriendly).html">@category.CategoryName</a>
+                                </li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <div id="main" class="clearfix">
+            @RenderBody()
+        </div>
+        <center>@Html.Raw(Model.ads1)</center>
+        <footer id="colophon" class="clearfix">
+            <div class="footer-socket-wrapper clearfix">
+                <div class="inner-wrap">
+                    <div class="footer-socket-area">
+                        <div class="footer-socket-right-section"></div>
+                        <div class="footer-socket-left-sectoin">
+                            <div class="copyright">Copyright © 2017 <a href="" title="Car news today"><span>Car newstoday</span></a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
